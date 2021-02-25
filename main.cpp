@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include "view.hpp"
 #include "tui.hpp"
+#include "gui.hpp"
 
 int main(int argc, char** argv)
 {
@@ -12,24 +13,30 @@ int main(int argc, char** argv)
 		exit(0);
 	}
 
+	View* V;
+
 	if (!strcmp(argv[1], "tui"))
 	{
-		Tui window;
-
-		window.init();
-		window.draw_frame();
-		window.run();
-		window.show_info();
+		V = new Tui;
 
 	}
 
 	else if (!strcmp(argv[1], "gui"))
 	{
-		printf("There will be gui soon!\n");
+	  V = new Gui;
 	}
 
 	else 
+	{
 		printf("Wrong argument!\n");
+		exit(0);
+	}
+
+	V -> init();
+	V -> draw_frame();
+	V -> run();
+	V -> show_info();
+	delete V;
 
 	return 0;
 }

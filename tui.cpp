@@ -4,12 +4,6 @@
 #include "view.hpp"
 #include "tui.hpp"
 
-void Tui::draw()
-{
-	#ifdef PRINT
-	printf("Hello, i am tui::Draw\n");
-	#endif
-}
 
 void Tui::run()
 {
@@ -101,9 +95,7 @@ Tui::Tui()
 
 Tui::~Tui()
 {
-	#ifdef PRINT
 	printf("Hello, i am dtor!\n");
-	#endif
 }
 
 /*

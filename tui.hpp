@@ -1,14 +1,12 @@
 #pragma once
 
-class Tui:View
+class Tui:public View
 {
 
 public:
 	Tui();
 	~Tui();
 
-
-	void draw();
 	void init();
 	void run();
 	void draw_frame();
