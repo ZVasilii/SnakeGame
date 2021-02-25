@@ -1,16 +1,21 @@
 EXECUTABLE = snake
-SRC = main.cpp tui.cpp
-FLAGS = -O2 -std=c++11 -Wall -Wextra
+CXXFLAGS = -O2 -std=c++11 -Wall -Wextra
 LDFLAGS = 
 
-snake: main.o tui.o 
-	$(CXX) main.o tui.o -o $(EXECUTABLE)
+snake: main.o tui.o gui.o game.o
+	$(CXX) $^ -o $(EXECUTABLE)
 
-main.o: main.cpp view.hpp tui.hpp
-	$(CXX) $< $(FLAGS) $(LDFLAGS) -c -o $@
+print: main.o tui.o gui.o game.o
+	$(CXX) $^ -DPRINT -o $(EXECUTABLE)
+
+main.o: main.cpp view.hpp tui.hpp gui.hpp
 
 tui.o: tui.cpp view.hpp tui.hpp
-	$(CXX) $< $(FLAGS) $(LDFLAGS) -c -o $@
+
+gui.o: gui.cpp view.hpp gui.hpp
+
+game.o: game.cpp game.hpp
+
 
 clean:
 	rm -rf main.o tui.o
