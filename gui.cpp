@@ -4,7 +4,6 @@
 #include "gui.hpp"
 
 
-
 void Gui::run()
 {
 	getchar();
@@ -25,13 +24,26 @@ void Gui::show_info()
 	printf("Gui::showing info!\n");
 }
 
+
 Gui::Gui()
 {
 	printf("Gui::constructor\n");
 }
 
+void Gui::draw_rabbit(Coord x)
+{
+	x = {0,0};
+	printf("Gui::drawing rabbit!\n");
+}
+
+void Gui::draw_snakeseg(Coord x)
+{
+	x = {0,0};
+	printf("Gui::drawing snake!\n");
+}
+
+
 Gui::~Gui()
 {
 	printf("Gui::destructor\n");
 }
-

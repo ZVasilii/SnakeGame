@@ -1,9 +1,13 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
+
 #include "view.hpp"
-#include "tui.hpp"
-#include "gui.hpp"
+#include "game.hpp"
+
+const int MAX_RABBITS = 5;
+const int MAX_SNAKES = 2;
+
 
 int main(int argc, char** argv)
 {
@@ -17,13 +21,13 @@ int main(int argc, char** argv)
 
 	if (!strcmp(argv[1], "tui"))
 	{
-		V = new Tui;
+		V = View::get_view(TUI);
 
 	}
 
 	else if (!strcmp(argv[1], "gui"))
 	{
-	  V = new Gui;
+	  V = View::get_view(GUI);
 	}
 
 	else 
@@ -34,9 +38,10 @@ int main(int argc, char** argv)
 
 	V -> init();
 	V -> draw_frame();
+	Game G(V);
 	V -> run();
 	V -> show_info();
-	delete V;
+	delete V; 
 
 	return 0;
 }

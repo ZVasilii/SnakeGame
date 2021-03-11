@@ -4,7 +4,6 @@
 #include "view.hpp"
 #include "tui.hpp"
 
-
 void Tui::run()
 {
 	getchar();
@@ -50,6 +49,19 @@ void Tui::draw_column(int size)
 
 	}
 }
+
+void Tui::draw_rabbit(Coord x)
+{
+	set_cursor(x.first, x.second);
+	printf("*");
+}
+
+void Tui::draw_snakeseg(Coord x)
+{
+	set_cursor(x.first, x.second);
+	printf("@");
+}
+
 
 void Tui::draw_frame()
 {
